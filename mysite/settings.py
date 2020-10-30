@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -39,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'main',
     'ckeditor',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -121,6 +123,16 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+# Email Config
+
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+# EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+# EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+
+
 # CKEditor Configurations
 
 CKEDITOR_CONFIGS = {
@@ -176,3 +188,4 @@ CKEDITOR_CONFIGS = {
     }
 }
 
+CRISPY_TEMPLATE_PACK = 'bootstrap4'

@@ -1,13 +1,27 @@
 {% extends 'main/index.html' %}
+{% load crispy_forms_tags %}
+
 {% block title %}Mysite | Contact{% endblock %}
 
 {% block main-content %}
 
-<form method="POST">
-    {% csrf_token %}
-    {{form}}
-    <button type="submit">Submit</button>
-</form>
+{% if messages %}
+    {% for message in messages %}
+        <div class="container-fluid alert alert-{{ message.tags }}">
+            <div class="container message">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <span id="id_message">{{ message }}</span>
+            </div>
+        </div>
+    {% endfor %}
+{% endif %}
+
+<div class="container text-center mt-5 mb-5">
+    <form method="POST">
+        {% csrf_token %}
+        {{form|crispy}}
+        <button type="submit btn btn-success">Submit</button>
+    </form>
+</div>
 
 {% endblock %}
-
