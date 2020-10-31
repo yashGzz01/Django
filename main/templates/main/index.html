@@ -38,7 +38,7 @@
     </div>
 </nav>
 
-{% block main-content %}{% endblock %}
+{% block main-content %}
 
 <!-- <h1>Hello World I am Nobody</h1>
 
@@ -46,5 +46,43 @@
 <h1> {{post.title}} </h1>
 <p> {{post.content|safe}} </p>
 {% endfor %} -->
+
+
+
+<div class="container mt-5">
+    <h1 class="text-center">Work Experience</h1>
+    {% for work in work_experience %}
+    <div>
+        <h2>{{work.title}}</h2>
+        <p><small>{{work.description}}</small></p>
+        <p><small>Starting date: {{work.starting_date}}| Ending date: {{work.ending_date}}</small></p>
+    </div><hr>
+    {% endfor %}
+</div>
+<div class="container mt-5">
+    <h1 class="text-center">Certificates</h1>
+    {% for cert in certificate %}
+    <div>
+        <h2>{{cert.title}}</h2>
+        <p><small>Url: <a href="{{cert.url}}">{{cert.url}}</a></small></p>
+        <p><small>{{cert.description}}</small></p>
+        <p><small>Issued date: {{cert.issue_date}}</small></p>
+    </div><hr>
+    {% endfor %}
+</div>
+<div class="container mt-5">
+    <h1 class="text-center">Projects</h1>
+    {% for proj in project %}
+    <div>
+        <h2>{{proj.title}}</h2>
+        {% if proj.url %}
+        <p><small>Url: <a href="{{proj.url}}">{{proj.url}}</a></small></p>
+        {% endif %}
+        <p><small>{{proj.description}}</small></p>
+        <p><small>Starting date: {{proj.starting_date}}| Ending date: {{proj.ending_date}}</small></p>
+    </div><hr>
+    {% endfor %}
+</div>
+{% endblock %}
 
 {% endblock %}

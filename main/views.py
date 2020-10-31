@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 # from django.http import HttpResponse
 from django.core.paginator import Paginator
 from main.models import Post
-from main.models import Contact
+from main.models import Contact, WorkExperience, Certificate, Project
 from main.forms import ContactForm
 
 # from django.core.email import EmailMessage
@@ -13,7 +13,12 @@ from django.contrib import messages
 
 # Create your views here.
 def index(request):
-    return render(request, 'main/index.html')
+    work_experience = WorkExperience.objects.all()
+    project = Project.objects.all()
+    certificate = Certificate.objects.all()
+
+    context = {'work_experience':work_experience, 'project':project, 'certificate':certificate}
+    return render(request, 'main/index.html', context)
 
 def blog(request):
     posts = Post.objects.all().order_by('-posted_date')
@@ -34,11 +39,11 @@ def contact(request):
     form = ContactForm(request.POST or None)
 
     if form.is_valid():
-        instance = form.save(commit=False)
 
-        name = instance.name
-        email = instance.email
-        message = instance.message
+        # instance = form.save(commit=False)
+        # name = instance.name
+        # email = instance.email
+        # message = instance.message
 
         # EmailMessage(
         #     'New message from %s', %name,

@@ -11,4 +11,27 @@ class Contact(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField()
     message = models.TextField()
+
+class WorkExperience(models.Model):
+    title = models.CharField(max_length=250)
+    workplace = models.CharField(max_length=200)
+    description = models.TextField()
+    starting_date = models.DateField()
+    ending_date = models.DateField()
+
+class Certificate(models.Model):
+    title = models.CharField(max_length=250)
+    description = models.TextField()
+    issue_date = models.DateField()
+    url = models.URLField()
+
+class Project(models.Model):
+    title = models.CharField(max_length=250)
+    description = models.TextField()
+    starting_date = models.DateField()
+    ending_date = models.DateField()
+    url = models.URLField(blank=True)
+    
+
+
     
